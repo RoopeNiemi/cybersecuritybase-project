@@ -4,15 +4,23 @@
         <title>Sign up form</title>
     </head>
     <body>
+        <h1>Your account</h1>
+        <span th:text="${username}">account name </span>
+        
+        <form th:action="@{/form/{account}(account=${username})}" th:method="delete">
+            <p><input type="submit" value ="Delete" /> </p>    
+        </form>
+        <h2>Sign up to the event using this form</h2>
 
-        <h1>Sign up to the event using this form</h1>
-
-        <form action="#" th:action="@{/form}" method="POST">
+        <form action="#" th:action="@{/form/{account}(account=${username})}" method="POST">
             <p><label for="name">Name</label>: <input type="text" name="name" id="name"/></p>
             <p><label for="address">Address</label>: <input type="text" name="address" id="address"/></p>
             <p><input type="submit" value="Submit" /></p>
         </form>
 
+        <p th:each="one : ${all}">
+            <span th:utext="${one.name}">name</span>
+        </p>
         <p></p>
     </body>
 </html>
